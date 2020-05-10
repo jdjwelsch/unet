@@ -30,9 +30,10 @@ class Dataset:
         labels are expected to have the same name as corresponding image.
         :param val_ratio: float, ratio of samples with existing groundtruth to
         be used as validation set
-        :param cross_validation: bool, wether to calculate crossvalidation folds
+        :param cross_validation: bool, whether to calculate crossvalidation
+        folds
         :param n_folds: int, number of folds for crossvalidation
-        :param normalise: wether to normalise images when loading
+        :param normalise: whether to normalise images when loading
         :param ignore: list, image names to be ignored (the corresponding labels
         will automatically be ignored)
         """
@@ -57,7 +58,7 @@ class Dataset:
 
         :param val_ratio:  ratio of samples with existing groundtruth to be used
         as validation set, ignored if cross_validation=True
-        :param cross_validation: wether to calculate crossvalidation folds
+        :param cross_validation: whether to calculate crossvalidation folds
         :param n_folds: number of folds for crossvalidation
         :return: dataframe with entries for each sample and its corresponding
         purpose / fold.
@@ -127,9 +128,9 @@ class Dataset:
         purpose/fold.
 
         :param purpose: string, 'train'/'val'/'test'
-        :param cross_validation: bool, wether to get crossvalidation folds
+        :param cross_validation: bool, whether to get crossvalidation folds
         :param fold: int, fold for crossvalidation
-        :param return_stats: bool, wether to return class_ratios as list
+        :param return_stats: bool, whether to return class_ratios as list
         :return: tensorflow dataset (, class_ratio)
         """
         np_images = self._load_images(purpose, cross_validation, fold) / 255
@@ -156,7 +157,7 @@ class Dataset:
 
         For documentation on properties see self._filter_df.
         :param purpose: string, 'train'/'val'/'test'
-        :param cross_validation: bool, wether to get crossvalidation folds
+        :param cross_validation: bool, whether to get crossvalidation folds
         :param fold: int, fold for crossvalidation
         :return: numpy array, shape (n_sample, x, y, n_channel)
         """
@@ -180,9 +181,9 @@ class Dataset:
 
         For documentation on properties see self._filter_df.
         :param purpose: string,  'train'/'val'/'test'
-        :param cross_validation: bool, wether to get crossvalidation folds
+        :param cross_validation: bool, whether to get crossvalidation folds
         :param fold: int, fold for crossvalidation
-        :param return_stats: bool, wether to return ratio of different labels
+        :param return_stats: bool, whether to return ratio of different labels
         over all loaded data
         :return: numpy array, shape (n_samples, x, y, 1)
         or tuple of numpy array, class_ratios if return_stats is True
@@ -218,7 +219,7 @@ class Dataset:
 
         Purpose is ignored, when cross_validation=True
         :param purpose: one of 'train'/'val'/'test'
-        :param cross_validation: wether to use cross validation folds
+        :param cross_validation: whether to use cross validation folds
         :param fold: crossvalidation fold to filter for
         :return: dataframe containing only filtered entries
         """
@@ -245,7 +246,7 @@ class DataAugmentor:
         for data augmentation
         :param flip_up_down: float, probability for doing a up_down flip for
         data augmentation
-        :param brightness: bool, wether to do brightness augmentation on image
+        :param brightness: bool, whether to do brightness augmentation on image
         :param gaussian: float, probability for adding gaussian noise to image
         as data augmentation
         :param gaussian_std: float, standard deviation for gaussian noise,
