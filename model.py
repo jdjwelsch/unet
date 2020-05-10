@@ -19,8 +19,8 @@ class UNetFactory:
         :param n_blocks: int, number of convolutional blocks to use
         :param n_classes: int, number of output classes, i.e. number of output
         channels for segmentation mask
-        :param batch_norm: bool, wHether to use batch_norm after convolutions
-        :param drop_out: bool, wHether to use drop_out before bottleneck
+        :param batch_norm: bool, whether to use batch_norm after convolutions
+        :param drop_out: bool, whether to use drop_out before bottleneck
         """
         self.input_shape = input_shape
         self.n_blocks = n_blocks
@@ -32,7 +32,7 @@ class UNetFactory:
 
     def get_model(self):
         """
-        Construct the keras model for U-Net.
+        Construct the keras model for U-Net with keras functional API
 
         :return: tf.keras.model instance
         """
