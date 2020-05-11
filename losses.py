@@ -86,13 +86,16 @@ def cce_loss(y_true, y_pred, n_out_channels, class_ratio=None):
     return loss
 
 
-def get_mixed_loss_function(n_out_channels, class_ratio=None):
+def get_mixed_loss_function(dice_weight, n_out_channels, class_ratio=None):
     """
-    Return mixed loss function with additional arguments already set.
+    Return mixed loss function consisting of an dice_loss and an cce_loss part
+    with additional arguments already set.
 
     This wrapper is necessary, as the keras training API does not allow for
     additional arguments in loss functions.
 
+    :param dice_weight: float, the weighting factor for dice loss. cce loss
+    will be weighted with (1 - dice_weight)
     :param n_out_channels: int, Number of output channels in prediction
     :param class_ratio: list, class frequency ratios. If provided,
     the cce_loss of class i will be weighted by 1-class_ratio[i]
@@ -117,7 +120,7 @@ def get_mixed_loss_function(n_out_channels, class_ratio=None):
         cross = cce_loss(y_true, y_pred, n_out_channels,
                          class_ratio=class_ratio)
         dice = dice_loss(y_true, y_pred, n_out_channels)
-        loss = 1.0 * cross + 0.15 * dice
+        loss = (1 - dice_weight) * cross + dice_weight * dice
         return loss
 
     return mixed_loss

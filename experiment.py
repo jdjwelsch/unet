@@ -20,7 +20,7 @@ dset = Dataset(image_dir='images',
                val_ratio=0.2,
                cross_validation=False,
                normalise=False,
-               ignore=['278.png'])
+               ignore=[])
 
 # configure which data augmentations to use and how often
 augmenter = DataAugmenter(flip_left_right=0.5,
@@ -53,7 +53,7 @@ model = model_factory.get_model()
 
 # mixed loss takes additional arguments, but passing arguments to loss
 # function is not allowed by keras API, so use function_wrapper:
-mixed_loss = get_mixed_loss_function(n_out_channels, class_ratio)
+mixed_loss = get_mixed_loss_function(0.15, n_out_channels, class_ratio)
 
 
 # define optimizer and additional metrics
