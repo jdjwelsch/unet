@@ -37,7 +37,7 @@ class TestLosses(unittest.TestCase):
                                              n_out_channels=2)
         y_true, y_pred = self._get_sample_tensors(2)
         loss_val = mixed_loss(y_true, y_pred)
-        
+
         # check that there is scalar output and value is between 0 and 1
         self.assertTrue(tf.rank(loss_val) == 0)
         self.assertGreaterEqual(loss_val, 0)
