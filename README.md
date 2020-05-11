@@ -23,5 +23,18 @@ entropy, and a combination
 of both can be found in `losses.py`.
   
 ## Usage
+Clone the repository and make sure you have the requirements needed by running
+TODO: requirements.txt
+
+Ensure that everything is running as expected by using unittest (in the
+ project directory):
+```
+python -m unittest discover tests
+```
+
 `experiment.py` shows how to set up a simple training experiment using the
- keras training API.
+keras training API. To start an experiment, navigate to the project
+directory and simply run
+```
+python experiment.py
+```

@@ -130,7 +130,6 @@ class TestDataAugmenter(unittest.TestCase):
         self.tf_dset = tf.data.Dataset.from_tensor_slices({'image': tf_image,
                                                            'label': tf_label})
 
-
     def test_augment_train_images(self):
         aug = DataAugmenter()
         aug_set = self.tf_dset.map(aug.augment_train_images)
