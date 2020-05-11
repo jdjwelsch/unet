@@ -70,7 +70,8 @@ def cce_loss(y_true, y_pred, n_out_channels, class_ratio=None):
         class_ratio = [0] * n_out_channels
 
     # class weights
-    w = tf.add([1.] * n_out_channels, tf.cast(-class_ratio, dtype=tf.float32))
+    neg_weights = tf.multiply(-1., tf.cast(class_ratio, dtype=tf.float32))
+    w = tf.add([1.] * n_out_channels, neg_weights)
 
     for i in range(n_out_channels):
         logit = tf.keras.backend.flatten(y_pred[:, :, :, i])
