@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
-import shutil
 import tensorflow as tf
-import numpy as np
 import unittest
 
 from model import UNetFactory
@@ -80,7 +77,7 @@ class TestUNetFactory(unittest.TestCase):
 
                 # check inference shape
                 pred = model(self.tensor_sample)
-                
+
                 exp_shape = self.tensor_shape.copy()
                 exp_shape[-1] = factory.n_classes
 
