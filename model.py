@@ -15,7 +15,9 @@ class UNetFactory:
     def __init__(self, input_shape, n_blocks=4, n_classes=1, batch_norm=True,
                  drop_out=False, logits=False):
         """
-        :param input_shape: tuple, shape of input images
+        :param input_shape: tuple, shape of input images. Has to be of form
+        [b, 2**n, 2**n, c] where n >= n_blocks. Otherwise skip connection
+        dimensions dont match.
         :param n_blocks: int, number of convolutional blocks to use
         :param n_classes: int, number of output classes, i.e. number of output
         channels for segmentation mask
