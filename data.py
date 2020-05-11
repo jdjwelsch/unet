@@ -232,7 +232,7 @@ class Dataset:
         return filtered_df
 
 
-class DataAugmentor:
+class DataAugmenter:
     """
     Class handling data augmentation for a tf_dataset.
 

@@ -10,7 +10,7 @@ The core of this project is the U-Net implementation, which can be found in
 
 ### Data processing
 There are some utilities which can be used for data loading and fold
-splitting  (`Dataset` class) and data augmentation (`DataAugmentor` class).
+splitting  (`Dataset` class) and data augmentation (`DataAugmenter` class).
 These can be found in `data.py`.
 The dataset class expects images and corresponding labels to be in png format.
 Images should be in a directory separate from the labels, these locations can

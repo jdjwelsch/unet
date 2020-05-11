@@ -3,7 +3,7 @@ import tensorflow as tf
 from datetime import datetime
 import functools
 
-from data import Dataset, DataAugmentor
+from data import Dataset, DataAugmenter
 from model import UNetFactory
 from losses import dice_loss, cce_loss, get_mixed_loss_function
 
@@ -23,7 +23,7 @@ dset = Dataset(image_dir='images',
                ignore=['278.png'])
 
 # configure which data augmentations to use and how often
-augmentor = DataAugmentor(flip_left_right=0.5,
+augmenter = DataAugmenter(flip_left_right=0.5,
                           flip_up_down=0.5,
                           brightness=True,
                           gaussian=0.3,
@@ -33,12 +33,12 @@ augmentor = DataAugmentor(flip_left_right=0.5,
 
 # create training set
 train_set, class_ratio = dset.create_tf_dataset('train', return_stats=True)
-train_set = train_set.map(augmentor.augment_train_images)
+train_set = train_set.map(augmenter.augment_train_images)
 train_set = train_set.shuffle(buffer_size=dset.n_train).batch(batch_size)
 
 # create validation set
 val_set = dset.create_tf_dataset('val')
-val_set = val_set.map(augmentor.load_validation_images)
+val_set = val_set.map(augmenter.load_validation_images)
 val_set = val_set.batch(batch_size)
 
 
