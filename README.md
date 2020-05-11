@@ -22,9 +22,11 @@ An implementation of the dice loss, as well as the weighted binary cross
 entropy, and a combination
 of both can be found in `losses.py`.
   
-## Usage
+## Set Up
 Clone the repository and make sure you have the requirements needed by running
-TODO: requirements.txt
+```
+pip install -r requirements.txt
+```
 
 Ensure that everything is running as expected by using unittest (in the
  project directory):
@@ -32,9 +34,10 @@ Ensure that everything is running as expected by using unittest (in the
 python -m unittest discover tests
 ```
 
+## Usage
 `experiment.py` shows how to set up a simple training experiment using the
-keras training API. To start an experiment, navigate to the project
-directory and simply run
+keras training API. To start an experiment, set your image and label
+directories in the file, navigate to the project directory and simply run
 ```
 python experiment.py
 ```
